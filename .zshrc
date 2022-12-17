@@ -147,6 +147,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+#
+# Change zsh base on terminal *Alacrity* or None
 terminal=$(ps -p $(ps -p $$ -o ppid=) -o args=)
 case $terminal in
 	*alacritty*)
@@ -159,4 +161,10 @@ esac
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 colorscript -r
 
- source /home/llydo1/.config/colorls/colorls-alias.sh
+# Add colorls alias
+source /home/llydo1/.config/colorls/colorls-alias.sh
+
+# Changing "cat" to "bat" / "bat" as manpager
+alias cat='bat --paging=never'
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
